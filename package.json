@@ -1,0 +1,13 @@
+{
+  "name": "search-engine-query",
+  "version": "1.0.0",
+  "description": "",
+  "main": "getSearchQueryResults.js",
+  "scripts": {
+    "test-dev": "jest"
+  },
+  "author": "",
+  "devDependencies": {
+    "jest": "^25.2.7"
+  }
+}
