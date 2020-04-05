@@ -4,9 +4,14 @@
   "description": "",
   "main": "getSearchQueryResults.js",
   "scripts": {
-    "test-dev": "jest"
+    "test-dev": "jest",
+    "server": "nodemon server.js"
   },
   "author": "",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4"
+  },
   "devDependencies": {
     "jest": "^25.2.7"
   }
