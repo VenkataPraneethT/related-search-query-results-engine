@@ -17,7 +17,14 @@ const getNoOfWordsMatch = (hashMapResults, queries, numberOfResults) => {
         if(!finalResults[queries[k]]) {
             finalResults[queries[k]] = [];
         }
-        finalResults[queries[k]].push([hashMapResults[j].key,((count/words.length) *100), lengthOfWordMatched*numberOfInstances, count]);
+        finalResults[queries[k]].push([
+          {
+            summary: hashMapResults[j].key,
+            id:hashMapResults[j].id,
+            title: hashMapResults[j].title,
+            query: queries[k]
+          }
+          ,((count/words.length) *100), lengthOfWordMatched*numberOfInstances, count]);
     }
   }
   return sortedResults(finalResults, queries, numberOfResults);
