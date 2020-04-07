@@ -5,14 +5,19 @@
   "main": "getSearchQueryResults.js",
   "scripts": {
     "test-dev": "jest",
-    "server": "nodemon server.js"
+    "client": "cd client && yarn start",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "dev:server": "cd client && yarn build && cd .. && yarn start",
+    "server": "nodemon server.js",
+    "start": "node server.js"
   },
-  "author": "",
+  "author": "Venkata Praneeth Tatiraju",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4"
   },
   "devDependencies": {
-    "jest": "^25.2.7"
+    "jest": "^25.2.7",
+    "concurrently": "^5.1.0"
   }
 }

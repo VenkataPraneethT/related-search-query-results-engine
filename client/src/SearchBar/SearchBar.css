@@ -1,0 +1,32 @@
+.search-bar {
+    display: flex;
+    justify-content: center;
+}
+
+.search-container {
+    border: 1px solid grey;
+}
+
+.search-bar input {
+    border: none;
+    box-sizing: border-box;
+    /* box-shadow: 0 0 0 1px rgba(0, 0, 0, .1), 0 2px 4px 1px rgba(0, 0, 0, .18); */
+    outline: none;
+}
+
+.search-bar ul {
+    list-style-type: none;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid grey;
+}
+
+.search-bar ul::before {
+    content: "";
+}
+
+.search-bar li {
+    padding: 10px 5px;
+    cursor: pointer;
+}

@@ -1,0 +1,17 @@
+{
+  "component": {
+    "path": "client\\src",
+    "css": {
+      "preprocessor": "css",
+      "module": false,
+      "withStyle": true
+    },
+    "test": {
+      "library": "Enzyme",
+      "withTest": true
+    },
+    "withStory": false,
+    "withLazy": false
+  },
+  "usesTypeScript": false
+}
