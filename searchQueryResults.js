@@ -17,14 +17,17 @@ const getNoOfWordsMatch = (hashMapResults, queries, numberOfResults) => {
         if(!finalResults[queries[k]]) {
             finalResults[queries[k]] = [];
         }
-        finalResults[queries[k]].push([
-          {
-            summary: hashMapResults[j].key,
-            id:hashMapResults[j].id,
-            title: hashMapResults[j].title,
-            query: queries[k]
-          }
-          ,((count/words.length) *100), lengthOfWordMatched*numberOfInstances, count]);
+        if(count > 0) {
+          finalResults[queries[k]].push([
+            {
+              summary: hashMapResults[j].key,
+              id:hashMapResults[j].id,
+              title: hashMapResults[j].title,
+              query: queries[k]
+            }
+            ,((count/words.length) *100), lengthOfWordMatched*numberOfInstances, count]);
+        }
+        
     }
   }
   return sortedResults(finalResults, queries, numberOfResults);
@@ -34,13 +37,16 @@ const getNoOfWordsMatch = (hashMapResults, queries, numberOfResults) => {
 const sortedResults = (finalResults, queries, numberOfResults) => {
   const finalResultList = [];
   for(let k=0; k< queries.length; k++) {
+    if(finalResults[queries[k]] && finalResults[queries[k]].length > 0) {
       finalResults[queries[k]].sort((a,b) => b[2] - a[2]);
       const resultSet = [];
       for(let n=0; n<numberOfResults; n++) {
           resultSet.push(finalResults[queries[k]][n][0]);
       }
       finalResultList.push(resultSet);
+    }
   }
+  // console.log(finalResultList)
   return finalResultList;
 };
 

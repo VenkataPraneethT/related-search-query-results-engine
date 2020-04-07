@@ -1,4 +1,4 @@
-const searchQUeryResults = require('./searchQueryResults');
+const searchQUeryResults = require('../searchQueryResults');
 
 describe("Tests the result set with relevant query matches", () => {
     const queries = ["test samples are ready"];
@@ -6,7 +6,12 @@ describe("Tests the result set with relevant query matches", () => {
     const testDataSet = {
         "test samples are ready": [
             [
-            "The coronavirus has no vaccine. It's hard to test and get samples from the patients. We are not ready with the vaccine trials. The world is not prepared for this.",
+            {
+                id:0,
+                query: "test samples are ready",
+                summary: "The coronavirus has no vaccine. It's hard to test and get samples from the patients. We are not ready with the vaccine trials. The world is not prepared for this.",
+                title: "test data set"
+            },
             100,
             19,
             4
@@ -16,7 +21,12 @@ describe("Tests the result set with relevant query matches", () => {
         "test the paragraph":[]
     };
     const expectedResult = [[
-        "The coronavirus has no vaccine. It's hard to test and get samples from the patients. We are not ready with the vaccine trials. The world is not prepared for this."
+        {
+            id:0,
+            query: "test samples are ready",
+            summary: "The coronavirus has no vaccine. It's hard to test and get samples from the patients. We are not ready with the vaccine trials. The world is not prepared for this.",
+            title: "test data set"
+        }
     ]];
     const implementation = ((testDataSet, queries,numberOfResults) => expectedResult);
     const mockFn = jest.fn()

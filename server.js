@@ -12,13 +12,14 @@ app.post('/api/query/results', (req, res) => {
     const queries = req.body.queries;
     const resultCount = req.body.count ? Number(req.body.count) : 0;
     const results =  getBookSummaries.getRelevantSearchResults(queries, resultCount);
-    getBookAuthors.getBookAuthorsDetails(results)
+    if(results && results.length > 0) {
+      getBookAuthors.getBookAuthorsDetails(results)
         .then((data) => {
-            // console.log(data)
-           // console.log(data, "test")
             res.send(data);
         })
-    
+    } else {
+      res.send(results);
+    }
 });
 
 if (process.env.NODE_ENV === 'production') {

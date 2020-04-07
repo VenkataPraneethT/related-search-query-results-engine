@@ -4,29 +4,16 @@ import './SearchBar.css';
 
 export default class SearchBar extends PureComponent {
 
-  constructor(props) {
-    super(props);
-    this.items = [
-      "David",
-      "Daniel",
-      "Sara",
-      "Jack"
-    ];
-  }
   static propTypes = {
     textChange: PropTypes.func
   };
 
-  handleChange = event => {
-    this.props.textChange(event.target.value);
-  };
-
-  renderItems()  {
-    const {summaries} = this.props;
-    if(summaries && summaries.length > 0) {
+  renderItems = () => {
+    const {summaries, showSuggestions} = this.props;
+    if(summaries && summaries.length > 0 && showSuggestions) {
       return (
       <ul>
-        {this.items.map((item, id) => <li key={id}>{item}</li>)}
+        {summaries.map((item) => <li key={item.id} className="list-items" onClick={this.props.getSelectedItemDetails} value={item.id}>{item.title}</li>)}
       </ul>
       );
     }
@@ -37,11 +24,11 @@ export default class SearchBar extends PureComponent {
     return (
         <div className="search-bar">
           <div className="search-container">
-            <input onChange={this.handleChange} type="text" placeholder="Search summaries..."/>
+            <input onChange={this.props.textChange} type="text" placeholder="Search summaries..." value={this.props.currentSelectedItemTitle}/>
             {this.renderItems()}
           </div>
-          <div>
-              <button type="button">Submit</button>
+          <div className="button-container">
+              <button type="button" onClick={this.props.submitBtnPressed} disabled={!this.props.currentSelectedItemTitle}>Submit</button>
           </div>
         </div>
     );

@@ -9,8 +9,8 @@ describe('<App />', () => {
     component = shallow(<App />);
   });
 
-  test('It should mount', () => {
-    expect(component.length).toBe(1);
+  it('It should mount', () => {
+    expect(component.length).toMatchSnapshot();
   });
 });
 

@@ -1,4 +1,4 @@
-const hashTablesWithWordsCount = require('./hashTableWithWordsAndCount');
+const hashTablesWithWordsCount = require('../hashTableWithWordsAndCount');
 
 
 describe("Testing hah table with words count", () => {
